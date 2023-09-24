@@ -1,7 +1,6 @@
 # Blockchain Implementation using Nodejs
 
-**Investigate Blockchain Principles:
-**
+**Investigate Blockchain Principles:**
 
 a. Peer to Peer Network
 
