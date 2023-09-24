@@ -7,35 +7,43 @@
 </head>
 <body>
   <h1 align="center">Assignment 1</h1>
-  <form id="transactionForm">
-    <label for="sender">Sender:</label>
-    <input type="text" id="sender" name="sender" required><br><br>
-    
-    <label for="receiver">Receiver:</label>
-    <input type="text" id="receiver" name="receiver" required><br><br>
-    
-    <label for="amount">Amount:</label>
-    <input type="number" id="amount" name="amount" required><br><br>
-    
-    <input  type="button" value="Add Transaction" onclick="addTransaction()">
-    <button class="styled-button2" onclick="addBlock()">Add Block</button>
+  <h2>Add Block: 
+  <button class="styled-button2" onclick="addBlock()">Add Block</button>
+  </h2>
 
-  </form>
+  <div class="overlay" id="overlay"></div>
+  <div class="popup-form" id="popupForm">
+      <form id="transactionForm">
+          <label for="sender">Sender:</label>
+          <input type="text" id="sender" name="sender" placeholder="Sender" required><br><br>
+
+          <label for="receiver">Receiver:</label>
+          <input type="text" id="receiver" name="receiver" placeholder="Receiver" required><br><br>
+
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" name="amount" placeholder="Amount" required><br><br>
+
+          <label for="blockHash">Block Hash:</label>
+          <input type="text" id="blockHash" name="blockHash" placeholder="Block Hash" required><br><br>
+
+          <input type="button" value="Add Transaction" onclick="addTransaction()">
+          <button type="button" class="cancel-button" onclick="toggleForm()">Cancel</button>
+      </form>
+  </div>
+
   <div id="blockchain">
 
-    <p class="data">Blockchain Data: </p>
-  <button id="toggleBlockchainButton" class="styled-button" onclick="toggleBlockchainTable()">Table</button>
-</div>
+  <h2>Blockchain Data: 
+   <button id="toggleBlockchainButton" class="styled-button2" onclick="toggleBlockchainTable()">Table</button>
+    </div>
+  </h2>
   <div id="blockchainTable"></div>
 
 
+  <button id="showMerkleTreeButton">Show Merkle Tree</button>
+  <div id="merkleTree"></div>
+  
 
-  <div id="merkleTree">
-    <h2>Merkle Tree</h2>
-    <div id="merkleLevels">
-      <!-- Merkle Tree levels will be displayed here -->
-    </div>
-  </div>
 <div id="transactiontable"></div>
   
   
