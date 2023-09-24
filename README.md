@@ -1,7 +1,7 @@
 # Blockchain Implementation using Nodejs
 
-Investigate Blockchain Principles:
-
+**Investigate Blockchain Principles:
+**
 
 a. Peer to Peer Network
 
@@ -39,8 +39,8 @@ structures rely on a Proof of Work or Proof of Stake to validate and agree on th
 transactions that are added to the blockchain.
 
 
-Course: Blockchain Technologies
+**Course:** Blockchain Technologies
 
-Assignment: Implementing a Basic Blockchain with Merkle Tree
+**Assignment:** Implementing a Basic Blockchain with Merkle Tree
 
-Group: IT-2102
+**Group:** IT-2102
