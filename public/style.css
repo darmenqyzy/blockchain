@@ -1,0 +1,106 @@
+body {
+    font-size: 15px;
+    line-height: 26px;
+    background-color: #fefcef;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+  }
+
+  th, td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  td {
+    word-wrap: break-word;
+    max-width: 300px; 
+  }
+
+  table tr:first-child th {
+    background-color: #3498db; /* Change to your desired background color */
+    color: white; /* Text color for the header */
+  }
+
+.styled-button {
+background-color: #000000; 
+color: white;
+border: none;
+border-radius: 30px;
+cursor: pointer;
+font-size: 20px; 
+}
+
+.styled-button:hover {
+background-color: #525455; 
+}
+
+.data {
+    margin-left: 42%;
+    font-size: 24px;
+    margin-right: 10px; /* Add some spacing between the text and button */
+}
+#blockchain {
+    display: flex;
+    align-items: center;
+  }
+
+#transactionForm {
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 10px;
+  }
+  
+  #transactionForm label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  #transactionForm input[type="text"],
+  #transactionForm input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #transactionForm input[type="button"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .styled-button2{
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .styled-button2:hover {
+    background-color: #2980b9;
+  }
+  #transactionForm input[type="button"]:hover {
+    background-color: #2980b9;
+  }
+  
+  #blockchainTable {
+    display: none;
+  }
