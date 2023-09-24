@@ -10,7 +10,7 @@ async function addBlock() {
     });
     if (response.ok) {
       alert('Block added successfully');
-      window.location.reload(); 
+      window.location.reload(); // Reload the page
       clearForm();
     } else {
       alert('Error adding block');
@@ -40,7 +40,7 @@ async function addTransaction() {
 
   if (response.ok) {
     alert('Transaction added successfully');
-    window.location.reload(); 
+    window.location.reload(); // Reload the page
     clearForm();
   } else {
     alert('Error adding transaction');
