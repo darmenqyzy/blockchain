@@ -1,7 +1,10 @@
 # Blockchain Implementation using Nodejs
 
 Investigate Blockchain Principles:
+
+
 a. Peer to Peer Network
+
 It consists of a collection of connected nodes. Peer to peer networks
 distribute the entire workload among users who have equal access to resources.
 Blockchain does not require an internal or external trust authority to function.
@@ -12,12 +15,18 @@ single entity but rather on a network of nodes. A data block is added to the cha
 after it has been verified by the users, at which point all users update their
 copies. The network won't accept a modified block if an attacker tries to alter
 data on any local node.
+
+
 b. Decentralized System
+
 The entire database and its history are completely accessible to everyone
 in the blockchain. The data is not controlled by a third party. Without using an
 intermediary, every user on the network can immediately validate the
 transactions.
+
+
 c. Security
+
 Blockchain enables the verification and traceability of multi-step
 transactions that require such functions. It can speed up data transfer
 procedures, offer secure transactions, and lower compliance expenses.
