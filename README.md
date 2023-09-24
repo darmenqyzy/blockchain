@@ -37,3 +37,10 @@ unique identifier for the block. And, each block contains a hash to the previous
 block in the chain which creates a chronological order of blocks. Blockchain
 structures rely on a Proof of Work or Proof of Stake to validate and agree on the
 transactions that are added to the blockchain.
+
+
+Course: Blockchain Technologies
+
+Assignment: Implementing a Basic Blockchain with Merkle Tree
+
+Group: IT-2102
