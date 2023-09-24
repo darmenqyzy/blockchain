@@ -10,14 +10,14 @@ async function addBlock() {
     });
     if (response.ok) {
       alert('Block added successfully');
-      loadBlockchain();
-      location.reload();
+      window.location.reload(); 
       clearForm();
     } else {
       alert('Error adding block');
     }
   }
 }
+
 async function addTransaction() {
   const sender = document.getElementById('sender').value;
   const receiver = document.getElementById('receiver').value;
@@ -25,7 +25,7 @@ async function addTransaction() {
   const blockHash = document.getElementById('blockHash').value; 
 
   if (!sender || !receiver || !amount || !blockHash) {
-    alert('Please fill in all fields, including Block Hash.');
+    alert('Please fill in all fields!');
     return;
   }
 
@@ -40,13 +40,13 @@ async function addTransaction() {
 
   if (response.ok) {
     alert('Transaction added successfully');
-    loadBlockchain();
+    window.location.reload(); 
     clearForm();
-    location.reload();
   } else {
     alert('Error adding transaction');
   }
 }
+
 
 
 function displayBlockchainData(blockchain) {
@@ -78,51 +78,48 @@ function displayBlockchainData(blockchain) {
   
   blockchain.forEach(block => {
     const row = document.createElement('tr');
-
+  
     const buttonCell = document.createElement('td');
     const addButton = document.createElement('button');
     addButton.textContent = 'Add Transaction';
     addButton.addEventListener('click', () => {
-      toggleForm(); 
+      toggleForm();
       const blockHashInput = document.getElementById('blockHash');
       blockHashInput.value = block.hash;
     });
     addButton.classList.add('styled-button3');
     buttonCell.appendChild(addButton);
-    
+  
     row.appendChild(buttonCell);
-
+  
     for (const key in block) {
       const cell = document.createElement('td');
-      
-      if (key === 'transaction') {
-        const transactionsArray = block[key];
-        const transactionsList = document.createElement('ul');
-        transactionsArray.forEach(transaction => {
-          const transactionItem = document.createElement('p');
-          transactionItem.textContent = transaction;
-          transactionsList.appendChild(transactionItem);
-        });
-        transactionUpdates.forEach(update => {
-          const transactionItem = document.createElement('p');
-          transactionItem.textContent = update;
-          transactionsList.appendChild(transactionItem);
-        });
   
-        cell.appendChild(transactionsList);
+      if (key === 'updates') {
+        const updatesArray = block.updates;
+        const updatesList = document.createElement('ul');
+  
+        if (updatesArray) {
+          updatesArray.forEach(update => {
+            const updateItem = document.createElement('p');
+            updateItem.textContent = `[${update.transactionArray.join(', ')}]`;
+            updatesList.appendChild(updateItem);
+          });
+        }
+  
+        cell.appendChild(updatesList);
       } else {
         cell.textContent = block[key];
       }
       row.appendChild(cell);
     }
-    
+  
     tbody.appendChild(row);
   });
-  
   table.appendChild(thead);
   table.appendChild(tbody);
   blockchainTableDiv.appendChild(table);
-  }
+}
 
 window.addEventListener('load', async () => {
 try {
@@ -204,7 +201,6 @@ async function displayMerkleTree() {
     console.error('Error fetching Merkle Tree:', error);
   }
 }
-
 
 function toggleForm() {
   const overlay = document.getElementById('overlay');

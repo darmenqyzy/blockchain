@@ -13,14 +13,12 @@ app.get('/', (req, res) => {
 
 var date = new Date().toLocaleString();
 
-
-
 function calculateHash(index, previousHash, timestamp, data, nonce) {
   const hashData = `${index}${previousHash}${timestamp}${JSON.stringify(data)}${nonce}`;
   return crypto.createHash('sha256').update(hashData).digest('hex');
 }
 
-function createBlock(transactions, previousBlock, transactionArray) {
+function createBlock(transactions, previousBlock) {
   const newIndex = previousBlock ? previousBlock.index + 1 : 0;
   const newTimestamp = date;
   const newNonce = findNonce(newIndex, previousBlock ? previousBlock.hash : '', newTimestamp, transactions);
@@ -33,7 +31,6 @@ function createBlock(transactions, previousBlock, transactionArray) {
     previousHash: previousBlock ? previousBlock.hash : '',
     timestamp: newTimestamp,
     transactions: transactions,
-    transactionArray: transactionArray,
     merkleRoot: merkleRoot,
     nonce: newNonce,
     hash: calculateHash(newIndex, previousBlock ? previousBlock.hash : '', newTimestamp, transactions, newNonce),
@@ -138,7 +135,6 @@ app.get('/getBlockchain', (req, res) => {
   res.json(blockchain);
 });
 
-
 app.post('/addTransaction', (req, res) => {
   const { transaction } = req.body;
   const transactionArray = [transaction.sender, transaction.receiver, transaction.amount];
@@ -148,9 +144,15 @@ app.post('/addTransaction', (req, res) => {
   const blockToUpdate = blockchain.find(block => block.hash === blockHash);
 
   if (blockToUpdate) {
-    blockToUpdate.transactions = blockToUpdate.transactions.concat(transactionData);
-    blockToUpdate.transactionArray = blockToUpdate.transactionArray.concat(transactionArray);
+    const update = {
+      transactionData: transactionData,
+      transactionArray: transactionArray
+    };
 
+    blockToUpdate.updates = blockToUpdate.updates || [];
+    blockToUpdate.updates.push(update);
+
+    console.log(blockchain);
     res.status(201).json({ message: 'Transaction added to the specified block' });
   } else {
     res.status(400).json({ message: 'Block not found' });
