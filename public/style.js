@@ -10,14 +10,14 @@ async function addBlock() {
     });
     if (response.ok) {
       alert('Block added successfully');
-      loadBlockchain();
-      location.reload();
+      window.location.reload(); // Reload the page
       clearForm();
     } else {
       alert('Error adding block');
     }
   }
 }
+
 async function addTransaction() {
   const sender = document.getElementById('sender').value;
   const receiver = document.getElementById('receiver').value;
@@ -40,13 +40,13 @@ async function addTransaction() {
 
   if (response.ok) {
     alert('Transaction added successfully');
-    loadBlockchain();
+    window.location.reload(); // Reload the page
     clearForm();
-    location.reload();
   } else {
     alert('Error adding transaction');
   }
 }
+
 
 
 function displayBlockchainData(blockchain) {
