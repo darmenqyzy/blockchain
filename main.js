@@ -48,19 +48,14 @@ const genesisData = 'Genesis Block';
 const genesisBlock = createBlock(genesisData, null);
 const blockchain = [genesisBlock];
 
-// Function to validate a block
 function isBlockValid(block, previousBlock) {
-  // Check if the index is correct
   if (block.index !== previousBlock.index + 1) {
     return false;
   }
-
-  // Check if the previousHash matches the hash of the previous block
   if (block.previousHash !== previousBlock.hash) {
     return false;
   }
 
-  // Recalculate the hash for the current block and compare it to the stored hash
   const calculatedHash = calculateHash(
     block.index,
     block.previousHash,
@@ -72,8 +67,6 @@ function isBlockValid(block, previousBlock) {
   if (block.hash !== calculatedHash) {
     return false;
   }
-
-  // Check if the hash starts with "0000" (you can adjust this difficulty)
   if (!block.hash.startsWith('0000')) {
     return false;
   }
