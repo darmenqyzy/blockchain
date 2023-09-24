@@ -13,6 +13,8 @@ app.get('/', (req, res) => {
 
 var date = new Date().toLocaleString();
 
+
+
 function calculateHash(index, previousHash, timestamp, data, nonce) {
   const hashData = `${index}${previousHash}${timestamp}${data}${nonce}`;
   return crypto.createHash('sha256').update(hashData).digest('hex');
