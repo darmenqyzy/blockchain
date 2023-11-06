@@ -81,7 +81,7 @@ function displayBlockchainData(blockchain) {
   
     const buttonCell = document.createElement('td');
     const addButton = document.createElement('button');
-    addButton.textContent = 'Add Transaction';
+    addButton.textContent = 'Buy Nft';
     addButton.addEventListener('click', () => {
       toggleForm();
       const blockHashInput = document.getElementById('blockHash');

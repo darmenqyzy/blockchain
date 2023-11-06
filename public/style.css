@@ -1,17 +1,17 @@
 body {
     font-size: 15px;
     line-height: 26px;
-    background-color: #fefcef;
+    background-color: #0B0D1F;
 }
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    border: 1px solid #333;
+    border: 1px solid #ffffff;
   }
 
   th, td {
-    border: 1px solid #333;
+    border: 1px solid #ffffff;
     padding: 8px;
     text-align: left;
   }
@@ -24,15 +24,17 @@ table {
     word-wrap: break-word;
     max-width: 300px; 
   }
-
+tbody{
+  background-color: white;
+}
   table tr:first-child th {
-    background-color: #3498db; 
-    color: white; 
+    background-color: #ffffff; 
+    color: rgb(0, 0, 0); 
   }
 
 .styled-button {
 background-color: #000000; 
-color: white;
+color: rgb(0, 0, 0);
 border: none;
 border-radius: 30px;
 cursor: pointer;
@@ -86,8 +88,8 @@ background-color: #525455;
   }
   
   .styled-button2{
-    background-color: #3498db;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     border: none;
     padding: 10px 20px;
     margin-top: 10px;
@@ -95,11 +97,12 @@ background-color: #525455;
     cursor: pointer;
   }
   .styled-button2:hover {
-    background-color: #2980b9;
+    background-color: #002b47;
+    color: white;
   }
   #transactionForm input[type="button"]:hover {
-    background-color: #2980b9;
-  }
+    background-color: #002b47;
+    color: white;  }
   
 .merkle-level {
   display: flex;
@@ -189,7 +192,7 @@ li {
 }
 
 .styled-button3{
-  background-color: #031d54a6;
+  background-color: #002169a6;
   color: white;
   border: none;
   padding: 10px 20px;

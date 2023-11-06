@@ -23,15 +23,13 @@ function createBlock(transactions, previousBlock) {
   const newTimestamp = date;
   const newNonce = findNonce(newIndex, previousBlock ? previousBlock.hash : '', newTimestamp, transactions);
 
-  const merkleTree = new MerkleTree(transactions);
-  const merkleRoot = merkleTree.getRoot();
 
   return {
     index: newIndex,
     previousHash: previousBlock ? previousBlock.hash : '',
     timestamp: newTimestamp,
     transactions: transactions,
-    merkleRoot: merkleRoot,
+    balance: 0,
     nonce: newNonce,
     hash: calculateHash(newIndex, previousBlock ? previousBlock.hash : '', newTimestamp, transactions, newNonce),
   };
@@ -48,40 +46,7 @@ function findNonce(index, previousHash, timestamp, transactions) {
   }
 }
 
-class MerkleTree {
-  constructor(transactions) {
-    this.transactions = transactions;
-    this.root = this.buildMerkleTree(transactions);
-  }
 
-  buildMerkleTree(transactions) {
-    if (transactions.length === 0) {
-      return [];
-    } else if (transactions.length === 1) {
-      return [this.calculateHash(transactions[0])];
-    }
-
-    const tree = [];
-
-    for (let i = 0; i < transactions.length; i += 2) {
-      const left = transactions[i];
-      const right = i + 1 < transactions.length ? transactions[i + 1] : '';
-
-      const combinedHash = this.calculateHash(left + right);
-      tree.push(combinedHash);
-    }
-
-    return this.buildMerkleTree(tree);
-  }
-
-  calculateHash(data) {
-    return crypto.createHash('sha256').update(data).digest('hex');
-  }
-
-  getRoot() {
-    return this.root[0];
-  }
-}
 
 const genesisData = ['Genesis Block'];
 const genesisBlock = createBlock(genesisData, null, null);
@@ -107,11 +72,6 @@ function isBlockValid(block, previousBlock) {
     return false;
   }
   if (!block.hash.startsWith('0000')) {
-    return false;
-  }
-
-  const merkleTree = new MerkleTree(block.transactions);
-  if (merkleTree.getRoot() !== block.merkleRoot) {
     return false;
   }
 
